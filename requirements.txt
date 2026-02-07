@@ -1,0 +1,8 @@
+boto3
+pandas
+polars
+python-dotenv
+requests
+dbt-duckdb
+pyarrow
+fastexcel
