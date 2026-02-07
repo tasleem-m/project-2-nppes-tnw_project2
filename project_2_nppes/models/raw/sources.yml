@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw, untransformed datasets ingested from external source systems.
+    schema: raw
+    tables:
+      - name: provider_specialty_raw
+        description: >
+          Raw provider specialty data containing taxonomy codes and specialty
+          classifications as received from the source system.
+
+      - name: nppes_raw
+        description: >
+          Raw National Plan and Provider Enumeration System (NPPES) data,
+          including provider identifiers, names, locations, and taxonomy
+          information, ingested directly from the source files.
+
+      - name: population_raw
+        description: >
+          Raw population data by geographic area, sourced externally and
+          stored without transformation.
+
+  - name: reference
+    description: >
+      Reference and lookup datasets used for standardization, enrichment,
+      and validation across analytical models.
+    schema: reference
+    tables:
+      - name: states_raw
+        description: >
+          Reference table containing U.S. state names and abbreviations.
+
+      - name: zip_county_raw
+        description: >
+          Reference mapping of ZIP codes to counties, used for geographic
+          enrichment and regional analysis.
