@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: specialty_distribution
+    columns:
+      - name: Classification
+        tests:
+          - not_null
+      - name: county_name        
+        tests:
+          - not_null
+
+  - name: providers_by_geography
+    columns:
+      - name: state_abbv
+        tests:
+          - unique
+          - not_null
+      - name: provider_count        
+        tests:
+          - not_null
+
+  - name: provider_directory
+    columns:
+      - name: Taxonomy_code
+        tests:
+          - not_null
+      - name: county_code        
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('population_clean')
+                field: county_code
+      - name: provider_name        
+        tests:
+          - not_null
+      - name: ZIP
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('nppes_clean')
+                field: ZIP
+    tests:
+      - distinct_providers_by_geography
+
+  - name: provider_density
+    columns:
+      - name: provider_per_capita
+        tests:
+          - not_null
+      - name: county_name        
+        tests:
+          - not_null
+      - name: state_abbv        
+        tests:
+          - not_null
